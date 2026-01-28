@@ -1,10 +1,15 @@
 <?php
 require_once 'functions.php';
+verificarAutenticacao(); 
+?>
+
+<?php
+require_once 'functions.php';
 
 $produto = null;
 $msg = '';
 
-// Processamento POST
+// POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $dados = [

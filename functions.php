@@ -1,7 +1,10 @@
 <?php
+session_start(); 
 require_once 'config.php';
 
-//JOIN
+
+
+
 function getProdutos($pdo, $busca = "", $categoriaId = "") {
     $sql = "SELECT p.*, c.nome as nome_categoria 
             FROM produtos p 
@@ -70,6 +73,30 @@ function salvarProduto($pdo, $dados) {
     } catch (PDOException $e) {
         
         return ['sucesso' => false, 'msg' => "Erro no banco de dados: " . $e->getMessage()];
+    }
+}
+
+function fazerLogin($pdo, $usuario, $senha) {
+    $usuario = trim($usuario);
+    $senha = trim($senha);
+
+    $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE usuario = ?");
+    $stmt->execute([$usuario]);
+    $user = $stmt->fetch();
+
+    if ($user && password_verify($senha, $user['senha'])) {
+        $_SESSION['usuario_id'] = $user['id'];
+        $_SESSION['usuario_nome'] = $user['usuario'];
+        return true;
+    }
+    return false;
+}
+
+function verificarAutenticacao() {
+    if (session_status() === PHP_SESSION_NONE) session_start();
+    if (!isset($_SESSION['usuario_id'])) {
+        header("Location: login.php");
+        exit;
     }
 }
 ?>

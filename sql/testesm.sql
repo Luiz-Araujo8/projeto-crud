@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/01/2026 às 18:30
+-- Tempo de geração: 28/01/2026 às 19:17
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -63,7 +63,7 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `preco`, `quantidade`, `descricao`, `categoria_id`, `data_criacao`) VALUES
-(2, 'Celular Samsung ', 1200.00, 23, 'celular', 1, '2026-01-28 13:12:26'),
+(2, 'Celular Samsung  df', 1200.00, 23, 'celular', 1, '2026-01-28 13:12:26'),
 (3, 'Celular Samsung 2', 1200.99, 5, 'celular 2', 1, '2026-01-28 13:12:48'),
 (4, 'roupa 1', 20.00, 6, 'r', 2, '2026-01-28 13:13:04'),
 (5, 'roupa 2', 12.00, 324, 'sdsd', 2, '2026-01-28 13:13:15'),
@@ -71,6 +71,25 @@ INSERT INTO `produtos` (`id`, `nome`, `preco`, `quantidade`, `descricao`, `categ
 (7, 'alimento 2', 20.00, 222, '&#039;&#039;&#039;', 3, '2026-01-28 13:13:51'),
 (8, 'movel 1', 12.00, 40, 'ccc', 4, '2026-01-28 13:14:07'),
 (9, 'movel 2', 111.99, 33, 'sdsd', 4, '2026-01-28 13:14:24');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `senha` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `senha`) VALUES
+(3, 'admin', '$2y$10$Oad7btiHyUGVr25reXUM/Ope2uxbyjEh5tEXOPX756nqA17oQoeRS');
 
 --
 -- Índices para tabelas despejadas
@@ -90,6 +109,13 @@ ALTER TABLE `produtos`
   ADD KEY `categoria_id` (`categoria_id`);
 
 --
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `usuario` (`usuario`);
+
+--
 -- AUTO_INCREMENT para tabelas despejadas
 --
 
@@ -103,7 +129,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para tabelas despejadas

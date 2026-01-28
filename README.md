@@ -2,6 +2,12 @@
 
 Este projeto é um sistema de controlo de inventário desenvolvido para demonstrar competências em desenvolvimento Full Stack. A aplicação permite o gerenciamento completo de produtos (CRUD) com uma interface moderna e atualizações em tempo real via AJAX.
 
+## 🔐 Credenciais de Acesso (Para Testes)
+
+Para facilitar a avaliação, o sistema possui um usuário pré-configurado:
+- **Usuário:** `admin`
+- **Senha:** `123`
+
 ## 🚀 Tecnologias e Conceitos Aplicados
 
 O projeto utiliza tecnologias fundamentais de mercado, focando em segurança e organização:
